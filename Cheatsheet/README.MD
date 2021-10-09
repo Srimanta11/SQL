@@ -125,89 +125,104 @@
   SELECT c1, c2 FROM t2;
   ```
 - Subtract a result set from another result set
-
+ 
+```SQL
 SELECT c1, c2 FROM t1
 MINUS
 SELECT c1, c2 FROM t2;
-Code language: SQL (Structured Query Language) (sql)
+```
 
-Query rows using pattern matching %, _
+- Query rows using pattern matching %, _
 
+```SQL
 SELECT c1, c2 FROM t1
 WHERE c1 [NOT] LIKE pattern;
-Code language: SQL (Structured Query Language) (sql)
+```
 
-Query rows in a list
+- Query rows in a list
 
+```SQL
 SELECT c1, c2 FROM t
 WHERE c1 [NOT] IN value_list;
-Code language: SQL (Structured Query Language) (sql)
+```
 
-Query rows between two values
+- Query rows between two values
 
+```SQL
 SELECT c1, c2 FROM t
 WHERE  c1 BETWEEN low AND high;
-Code language: SQL (Structured Query Language) (sql)
+```
 
-Check if values in a table is NULL or not
+- Check if values in a table is NULL or not
 
+```SQL
 SELECT c1, c2 FROM t
 WHERE  c1 IS [NOT] NULL;
-Code language: SQL (Structured Query Language) (sql)
+```
 
-Managing tables
+- Managing tables
 
-Create a new table with three columns
+  - Create a new table with three columns
 
-CREATE TABLE t (
-     id INT PRIMARY KEY,
-     name VARCHAR NOT NULL,
-     price INT DEFAULT 0
-);
-Code language: SQL (Structured Query Language) (sql)
+  ```SQL
+  CREATE TABLE t (
+       id INT PRIMARY KEY,
+       name VARCHAR NOT NULL,
+       price INT DEFAULT 0
+  );
+  ```
+  
+  - Delete the table from the database
 
-Delete the table from the database
+  ```SQL
+  DROP TABLE t ;
+  ```
 
-DROP TABLE t ;
-Code language: SQL (Structured Query Language) (sql)
+  - Add a new column to the table
 
-Add a new column to the table
+  ```SQL
+  ALTER TABLE t ADD column;
+  ```
 
-ALTER TABLE t ADD column;
-Code language: SQL (Structured Query Language) (sql)
+  - Drop column c from the table
 
-Drop column c from the table
+  ```SQL
+  ALTER TABLE t DROP COLUMN c ;
+  ```
 
-ALTER TABLE t DROP COLUMN c ;
-Code language: SQL (Structured Query Language) (sql)
+  - Add a constraint
 
-Add a constraint
+  ```SQL
+  ALTER TABLE t ADD constraint;
+  ```
 
-ALTER TABLE t ADD constraint;
-Code language: SQL (Structured Query Language) (sql)
+  - Drop a constraint
 
-Drop a constraint
+  ```SQL
+  ALTER TABLE t DROP constraint;
+  ```
 
-ALTER TABLE t DROP constraint;
-Code language: SQL (Structured Query Language) (sql)
+ - Rename a table from t1 to t2
 
-Rename a table from t1 to t2
+  ```SQL
+  ALTER TABLE t1 RENAME TO t2;
+  ```
+  
+  - Rename column c1 to c2
 
-ALTER TABLE t1 RENAME TO t2;
-Code language: SQL (Structured Query Language) (sql)
+  ```SQL
+  ALTER TABLE t1 RENAME c1 TO c2 ;
+  ```
+  
+  - Remove all data in a table
 
-Rename column c1 to c2
+  ```SQL
+  TRUNCATE TABLE t;
+  ```
+  
+  - Using SQL constraints
 
-ALTER TABLE t1 RENAME c1 TO c2 ;
-Code language: SQL (Structured Query Language) (sql)
-
-Remove all data in a table
-
-TRUNCATE TABLE t;
-Code language: SQL (Structured Query Language) (sql)
-
-Using SQL constraints
-
+```SQ
 Set c1 and c2 as a primary key
 
 CREATE TABLE t(
