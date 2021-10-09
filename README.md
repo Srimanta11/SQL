@@ -1,2 +1,4 @@
 # SQL
-SQL Practice Questions
+## Cheatsheet
+
+## Practice Questions
