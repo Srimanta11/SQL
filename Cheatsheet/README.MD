@@ -221,153 +221,154 @@ WHERE  c1 IS [NOT] NULL;
   ```
   
   - Using SQL constraints
+    - Set c1 and c2 as a primary key
 
-```SQ
-Set c1 and c2 as a primary key
+    ```SQL
+    CREATE TABLE t(
+        c1 INT, c2 INT, c3 VARCHAR,
+        PRIMARY KEY (c1,c2)
+    );
+    ```
 
-CREATE TABLE t(
-    c1 INT, c2 INT, c3 VARCHAR,
-    PRIMARY KEY (c1,c2)
-);
-Code language: SQL (Structured Query Language) (sql)
+    - Set c2 column as a foreign key
 
-Set c2 column as a foreign key
+    ```SQL
+    CREATE TABLE t1(
+        c1 INT PRIMARY KEY,  
+        c2 INT,
+        FOREIGN KEY (c2) REFERENCES t2(c2)
+    );
+    ```
 
-CREATE TABLE t1(
-    c1 INT PRIMARY KEY,  
-    c2 INT,
-    FOREIGN KEY (c2) REFERENCES t2(c2)
-);
-Code language: SQL (Structured Query Language) (sql)
+    - Make the values in c1 and c2 unique
 
-Make the values in c1 and c2 unique
+    ```SQL
+    CREATE TABLE t(
+        c1 INT, c1 INT,
+        UNIQUE(c2,c3)
+    );
+    ```
 
-CREATE TABLE t(
-    c1 INT, c1 INT,
-    UNIQUE(c2,c3)
-);
-Code language: SQL (Structured Query Language) (sql)
+    - Ensure c1 > 0 and values in c1 >= c2
 
-Ensure c1 > 0 and values in c1 >= c2
+    ```SQL
+    CREATE TABLE t(
+      c1 INT, c2 INT,
+      CHECK(c1> 0 AND c1 >= c2)
+    );
+    ```
 
-CREATE TABLE t(
-  c1 INT, c2 INT,
-  CHECK(c1> 0 AND c1 >= c2)
-);
-Code language: SQL (Structured Query Language) (sql)
+    - Set values in c2 column not NULL
 
-Set values in c2 column not NULL
+    ```SQL
+    CREATE TABLE t(
+         c1 INT PRIMARY KEY,
+         c2 VARCHAR NOT NULL
+    );
+    ```
 
-CREATE TABLE t(
-     c1 INT PRIMARY KEY,
-     c2 VARCHAR NOT NULL
-);
-Code language: SQL (Structured Query Language) (sql)
+- Modifying Data
 
-Modifying Data
+  - Insert one row into a table
+  ```SQL
+  INSERT INTO t(column_list)
+  VALUES(value_list);
+  ```
 
-Insert one row into a table
+  - Insert multiple rows into a table
+  ```SQL
+  INSERT INTO t(column_list)
+  VALUES (value_list), 
+         (value_list), …;
+  ```
 
-INSERT INTO t(column_list)
-VALUES(value_list);
-Code language: SQL (Structured Query Language) (sql)
+  - Insert rows from t2 into t1
+  ```SQL
+  INSERT INTO t1(column_list)
+  SELECT column_list
+  FROM t2;
+  ```
 
-Insert multiple rows into a table
+  - Update new value in the column c1 for all rows
+  ```SQL
+  UPDATE t
+  SET c1 = new_value;
+  ```
 
-INSERT INTO t(column_list)
-VALUES (value_list), 
-       (value_list), …;
-Code language: SQL (Structured Query Language) (sql)
+  - Update values in the column c1, c2 that match the condition
+  ```SQL
+  UPDATE t
+  SET c1 = new_value, 
+          c2 = new_value
+  WHERE condition;
+  ```
 
-Insert rows from t2 into t1
+  - Delete all data in a table
+  ```SQL
+  DELETE FROM t;
+  ```
 
-INSERT INTO t1(column_list)
-SELECT column_list
-FROM t2;
-Code language: SQL (Structured Query Language) (sql)
+  - Delete subset of rows in a table
+  ```SQL
+  DELETE FROM t
+  WHERE condition;
+  ```
 
-Update new value in the column c1 for all rows
+- Managing Views
 
-UPDATE t
-SET c1 = new_value;
-Code language: SQL (Structured Query Language) (sql)
+  - Create a new view that consists  of c1 and c2
+  ```SQL
+  CREATE VIEW v(c1,c2) 
+  AS
+  SELECT c1, c2
+  FROM t;
+  ```
 
-Update values in the column c1, c2 that match the condition
+  - Create a new view with check option
+  ```SQL
+  CREATE VIEW v(c1,c2) 
+  AS
+  SELECT c1, c2
+  FROM t;
+  WITH [CASCADED | LOCAL] CHECK OPTION;
+  ```
 
-UPDATE t
-SET c1 = new_value, 
-        c2 = new_value
-WHERE condition;
-Code language: SQL (Structured Query Language) (sql)
+  - Create a recursive view
+  ```SQL
+  CREATE RECURSIVE VIEW v 
+  AS
+  select-statement -- anchor part
+  UNION [ALL]
+  select-statement; -- recursive part
+  ```
 
-Delete all data in a table
+  - Create a temporary view
+  ```SQL
+  CREATE TEMPORARY VIEW v 
+  AS
+  SELECT c1, c2
+  FROM t;
+  ```
 
-DELETE FROM t;
-Code language: SQL (Structured Query Language) (sql)
+  - Delete a view
+  ```SQL
+  DROP VIEW view_name;
+  ```
 
-Delete subset of rows in a table
+- Managing indexes
 
-DELETE FROM t
-WHERE condition;
-Code language: SQL (Structured Query Language) (sql)
-
-Managing Views
-
-Create a new view that consists  of c1 and c2
-
-CREATE VIEW v(c1,c2) 
-AS
-SELECT c1, c2
-FROM t;
-Code language: SQL (Structured Query Language) (sql)
-
-Create a new view with check option
-
-CREATE VIEW v(c1,c2) 
-AS
-SELECT c1, c2
-FROM t;
-WITH [CASCADED | LOCAL] CHECK OPTION;
-Code language: SQL (Structured Query Language) (sql)
-
-Create a recursive view
-
-CREATE RECURSIVE VIEW v 
-AS
-select-statement -- anchor part
-UNION [ALL]
-select-statement; -- recursive part
-Code language: SQL (Structured Query Language) (sql)
-
-Create a temporary view
-
-CREATE TEMPORARY VIEW v 
-AS
-SELECT c1, c2
-FROM t;
-Code language: SQL (Structured Query Language) (sql)
-
-Delete a view
-
-DROP VIEW view_name;
-Code language: SQL (Structured Query Language) (sql)
-
-Managing indexes
-
-Create an index on c1 and c2 of the t table
-
-CREATE INDEX idx_name 
-ON t(c1,c2);
-Code language: SQL (Structured Query Language) (sql)
-
-Create a unique index on c3, c4 of the t table
-
-CREATE UNIQUE INDEX idx_name
-ON t(c3,c4)
-Code language: SQL (Structured Query Language) (sql)
+  - Create an index on c1 and c2 of the t table
+  ```SQL
+  CREATE INDEX idx_name 
+  ON t(c1,c2);
+  ```
+  - Create a unique index on c3, c4 of the t table
+  ```SQL
+  CREATE UNIQUE INDEX idx_name
+  ON t(c3,c4)
+  ```
 
 - Drop an index
-- 
 ```SQL
 DROP INDEX idx_name;
 ```
