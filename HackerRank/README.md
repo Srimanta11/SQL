@@ -132,24 +132,87 @@
     FROM BST
     ORDER BY N ASC
 ```
-<!-- 
+
 ## Aggregation
-- []()
+- [Revising Aggregations - The Count Function](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function)
+```SQL
+    select COUNT(ID) from CITY where POPULATION > 100000;
+```
+
+- [Revising Aggregations - The Sum Function](https://www.hackerrank.com/challenges/revising-aggregations-sum)
+```SQL
+    select SUM(POPULATION) from CITY where DISTRICT = 'California';
+```
+
+- [Revising Aggregations - Averages](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function)
+```SQL
+    select AVG(POPULATION) from CITY where DISTRICT = 'California';
+```
+
+- [Average Population](https://www.hackerrank.com/challenges/average-population)
+```SQL
+    select FLOOR(AVG(POPULATION)) from CITY;
+```
+
+- [Japan Population](https://www.hackerrank.com/challenges/japan-population/problem)
+```SQL
+    select SUM(POPULATION) from CITY where countrycode='JPN';
+```
+
+- [Population Density Difference](https://www.hackerrank.com/challenges/population-density-difference/problem)
+```SQL
+    select max(population) - min(population) from CITY;
+```
+
+- [The Blunder](https://www.hackerrank.com/challenges/the-blunder/problem)
+```SQL
+    SELECT CEIL(AVG(Salary)-AVG(REPLACE(Salary,'0',''))) FROM EMPLOYEES;
+```
+
+- [Top Earners](https://www.hackerrank.com/challenges/earnings-of-employees/problem)
+```SQL
+    select months*salary as earn, count(*)from employee group by earn order by earn desc limit 1;
+```
+
+- [Weather Observation Station 2](https://www.hackerrank.com/challenges/weather-observation-station-2)
+```SQL
+    select round(sum(lat_n),2), round(sum(long_w),2) from station;
+```
+
+- [Weather Observation Station 13](https://www.hackerrank.com/challenges/weather-observation-station-13)
 ```SQL
 ```
 
-- []()
+- [Weather Observation Station 14](https://www.hackerrank.com/challenges/weather-observation-station-14)
 ```SQL
 ```
 
-- []()
+- [Weather Observation Station 15](https://www.hackerrank.com/challenges/weather-observation-station-15)
 ```SQL
 ```
 
-- []()
+- [Weather Observation Station 16](https://www.hackerrank.com/challenges/weather-observation-station-16)
 ```SQL
 ```
 
+- [Weather Observation Station 17](https://www.hackerrank.com/challenges/weather-observation-station-17)
+```SQL
+```
+
+- [Weather Observation Station 18](https://www.hackerrank.com/challenges/weather-observation-station-18)
+```SQL
+```
+
+- [Weather Observation Station 19](https://www.hackerrank.com/challenges/weather-observation-station-19)
+```SQL
+```
+
+- [Weather Observation Station 20](https://www.hackerrank.com/challenges/weather-observation-station-20)
+```SQL
+    select round(s.lat_n, 4) from station s where (select count(lat_n) from station where s.lat_n > lat_n ) = (select count(lat_n) from station where s.lat_n < lat_n ); 
+```
+
+<!-- 
 ## Basic Join
 - []()
 ```SQL
