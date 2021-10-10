@@ -181,30 +181,42 @@
 
 - [Weather Observation Station 13](https://www.hackerrank.com/challenges/weather-observation-station-13)
 ```SQL
+    select round(sum(lat_n),4) from station where lat_n > 38.7880 AND lat_n < 137.2345;
 ```
 
 - [Weather Observation Station 14](https://www.hackerrank.com/challenges/weather-observation-station-14)
 ```SQL
+    select round(max(lat_n),4) from station where lat_n < 137.2345;
 ```
 
 - [Weather Observation Station 15](https://www.hackerrank.com/challenges/weather-observation-station-15)
 ```SQL
+    select round(long_w,4) from station where lat_n=(select max(lat_n) from station where lat_n < 137.2345);
 ```
 
 - [Weather Observation Station 16](https://www.hackerrank.com/challenges/weather-observation-station-16)
 ```SQL
+    select min(round(lat_n,4)) from station where lat_n > 38.7780;
 ```
 
 - [Weather Observation Station 17](https://www.hackerrank.com/challenges/weather-observation-station-17)
 ```SQL
+    select round(long_w,4) from station where lat_n=(select min(lat_n) from station where lat_n > 38.7780);
 ```
 
 - [Weather Observation Station 18](https://www.hackerrank.com/challenges/weather-observation-station-18)
 ```SQL
+    SELECT ROUND( MAX(lat_n)-MIN(lat_n) + MAX(long_w)-MIN(long_w), 4) FROM Station;
 ```
 
 - [Weather Observation Station 19](https://www.hackerrank.com/challenges/weather-observation-station-19)
 ```SQL
+    SELECT ROUND(
+    SQRT(
+        POWER((MAX(lat_n)-MIN(lat_n)), 2)
+        + POWER((MAX(long_w)-MIN(long_w)), 2)
+        ),
+    4) FROM Station;
 ```
 
 - [Weather Observation Station 20](https://www.hackerrank.com/challenges/weather-observation-station-20)
