@@ -132,7 +132,7 @@
     FROM BST
     ORDER BY N ASC
 ```
-
+<!-- 
 ## Aggregation
 - []()
 ```SQL
@@ -186,7 +186,7 @@
 
 - []()
 ```SQL
-```
+``` -->
 
 ## Alternative Queries
 - [Draw The Triangle 1](https://www.hackerrank.com/challenges/draw-the-triangle-1)
