@@ -224,24 +224,39 @@
     select round(s.lat_n, 4) from station s where (select count(lat_n) from station where s.lat_n > lat_n ) = (select count(lat_n) from station where s.lat_n < lat_n ); 
 ```
 
-<!-- 
 ## Basic Join
-- []()
+- [Population Census](https://www.hackerrank.com/challenges/asian-population)
 ```SQL
+    select sum(c.population) from city c, country d where c.countrycode = d.code AND d.continent ='Asia';
 ```
 
-- []()
+- [African Cities](https://www.hackerrank.com/challenges/african-cities)
 ```SQL
+    select c.name from city c, country d where c.countrycode = d.code AND d.continent ='Africa';
 ```
 
-- []()
+- [Average Population of Each Continent](https://www.hackerrank.com/challenges/average-population-of-each-continent)
 ```SQL
+    select d.continent, floor(avg(c.population)) from city c, country d where c.countrycode = d.code group by d.continent;
 ```
 
-- []()
+- [The Report](https://www.hackerrank.com/challenges/the-report)
 ```SQL
+    select if(g.grade<8, 'NULL', s.name), g.grade, s.marks from students as s, grades as g where s.marks between g.min_mark and g.max_mark order by g.grade desc, s.name; 
 ```
--->
+
+- [Contest Leaderboard](https://www.hackerrank.com/challenges/contest-leaderboard)
+```SQL
+    select h.hacker_id, name, sum(score) as total_score
+    from
+    hackers as h inner join
+    (select hacker_id,  max(score) as score from submissions group by challenge_id, hacker_id) max_score
+    on h.hacker_id=max_score.hacker_id
+    group by h.hacker_id, name
+    having total_score > 0
+    order by total_score desc, h.hacker_id;
+```
+
 ## Advanced Join
 - [Interviews](https://www.hackerrank.com/challenges/interviews/problem)
 ```SQL
