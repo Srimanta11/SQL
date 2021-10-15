@@ -1,7 +1,5 @@
 # MySQL cheatsheet
 
-I have even uploaded the .sql file which you can download and directly run them in the sql prompt.
-
 ### General Commands
 To run sql files
 ```sql
