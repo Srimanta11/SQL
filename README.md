@@ -1,6 +1,6 @@
 # SQL/MySQL
   
-## Cheatsheet
+## Cheatsheets
 - [SQL](https://github.com/Sayan3990/SQL/tree/main/Cheatsheet/SQL)
 - [MySQL](https://github.com/Sayan3990/SQL/tree/main/Cheatsheet/MySQL)
 
