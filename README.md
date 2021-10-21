@@ -10,5 +10,5 @@
 ## License
 - Distributed under the MIT License. See `LICENSE` for more information.
 
-### Hope this will be helpful for your next project
+### Hope this will be helpful
 #### Thank you for visiting
