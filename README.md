@@ -6,6 +6,8 @@
 
 ## Practice Questions
 - HackerRank [SQL Solutions](https://github.com/Srimanta11/SQL/tree/main/HackerRank)
+- LeetCode [SQL Solutions](https://github.com/Srimanta11/SQL/tree/main/LeetCode)
+
 
 ## License
 - Distributed under the MIT License. See `LICENSE` for more information.
