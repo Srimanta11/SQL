@@ -1,3 +1,5 @@
+## LeetCode SQL Solutions
+
 1. [Combine Two Tables](https://leetcode.com/problems/combine-two-tables/)
 ```SQL
 SELECT Person.FirstName, Person.LastName, Address.City, Address.State 
@@ -81,6 +83,56 @@ WHERE wt1.Temperature > wt2.Temperature AND
 TO_DAYS(wt1.recordDate)-TO_DAYS(wt2.recordDate)=1;
 ```
 
+11. [Trips and Users](https://leetcode.com/problems/trips-and-users/)
+```SQL
+select t.Request_at Day,
+       ROUND((count(IF(t.status!='completed',TRUE,null))/count(*)),2) as 'Cancellation Rate'
+from Trips t where 
+t.Client_Id in (Select Users_Id from Users where Banned='No') 
+and t.Driver_Id in (Select Users_Id from Users where Banned='No')
+and t.Request_at between '2013-10-01' and '2013-10-03'
+group by t.Request_at;
+```
+
+12. []()
+```SQL
+```
+
+13. []()
+```SQL
+```
+
+14. []()
+```SQL
+```
+
+15. []()
+```SQL
+```
+
+16. []()
+```SQL
+```
+
+17. []()
+```SQL
+```
+
+18. []()
+```SQL
+```
+
+19. []()
+```SQL
+```
+
+20. []()
+```SQL
+```
+
 . []()
 ```SQL
 ```
+
+
+
