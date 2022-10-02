@@ -1,3 +1,5 @@
+# HackerRank SQL Solutions
+
 # Subdomains Wise Questions
 
 ## Basic Select
