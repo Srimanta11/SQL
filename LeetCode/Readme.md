@@ -1,3 +1,5 @@
+## LeetCode SQL Solutions
+
 1. [Combine Two Tables](https://leetcode.com/problems/combine-two-tables/)
 ```SQL
 SELECT Person.FirstName, Person.LastName, Address.City, Address.State 
@@ -81,6 +83,88 @@ WHERE wt1.Temperature > wt2.Temperature AND
 TO_DAYS(wt1.recordDate)-TO_DAYS(wt2.recordDate)=1;
 ```
 
+11. [Trips and Users](https://leetcode.com/problems/trips-and-users/)
+```SQL
+select t.Request_at Day,
+       ROUND((count(IF(t.status!='completed',TRUE,null))/count(*)),2) as 'Cancellation Rate'
+from Trips t where 
+t.Client_Id in (Select Users_Id from Users where Banned='No') 
+and t.Driver_Id in (Select Users_Id from Users where Banned='No')
+and t.Request_at between '2013-10-01' and '2013-10-03'
+group by t.Request_at;
+```
+
+12. [Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
+```SQL
+select name from customer where referee_id <> 2 OR referee_id IS NULL
+```
+
+13. [Customer Placing the Largest Number of Orders](https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/)
+```SQL
+select customer_number from orders
+group by customer_number
+order by count(order_number) desc limit 1;
+```
+
+14. [Big Countries](https://leetcode.com/problems/big-countries/)
+```SQL
+select name, population, area from world 
+where area >= 3000000 or population >= 25000000 
+```
+
+15. [Sales Person](https://leetcode.com/problems/sales-person/)
+```SQL
+SELECT name from salesperson
+where sales_id not in 
+(
+    select sales_id from orders where com_id in 
+	(select com_id from company where name='RED')
+)
+```
+
+16. [Tree Node](https://leetcode.com/problems/tree-node/)
+```SQL
+SELECT id, 
+IF (p_id IS NULL, "Root",
+	IF (id IN (SELECT p_id FROM Tree), "Inner", "Leaf") 
+) AS type
+FROM Tree
+```
+
+17. [Swap Salary](https://leetcode.com/problems/swap-salary/)
+```SQL
+UPDATE salary SET sex = IF(sex = 'm', 'f', 'm')
+```
+
+18. [Actors and Directors Who Cooperated At Least Three Times](https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/)
+```SQL
+select actor_id, director_id
+from ActorDirector
+group by actor_id, director_id 
+having count(timestamp) > 2
+```
+
+19. [Sales Analysis III](https://leetcode.com/problems/sales-analysis-iii/)
+```SQL
+SELECT s.product_id, product_name
+FROM Sales s
+LEFT JOIN Product p
+ON s.product_id = p.product_id
+GROUP BY s.product_id
+HAVING MIN(sale_date) >= CAST('2019-01-01' AS DATE) AND
+       MAX(sale_date) <= CAST('2019-03-31' AS DATE)
+```
+
+20. [Game Play Analysis I](https://leetcode.com/problems/game-play-analysis-i/)
+```SQL
+select player_id, min(event_date) as first_login
+from activity 
+group by player_id
+```
+
 . []()
 ```SQL
 ```
+
+
+
